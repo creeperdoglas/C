@@ -9,19 +9,15 @@ int main()
 	int I;
 	string S;
 	double F;
+	char T;
 
-	cout << "Mata in ett heltal" << endl;
+	cout << "Skriv in ett heltal";
 	cin >> I;
-	cout << "Du matade in hetalet" << I << endl;
+	cout << "Du skrev in hetalet " << I << endl;
 
-	cout << "Mata in ett heltal och ett ord: " << endl;
+	cout << "skriv in fem heltal: ";
 	cin >> I;
-	cin >> S;
-	cout << "Du matade in talet |" << I << "| och ordet |" << S << "|." << endl;
-
-	cout << "Mata in fem heltal: ";
-	cin >> I;
-	cout << "Du matade in: ";
+	cout << "Du skrev in: ";
 	cout << I;
 	cout << " ";
 	cin >> I;
@@ -37,9 +33,9 @@ int main()
 	cout << I;
 	cout << "." << endl;
 
-	cout << "Mata in ett flyttal: ";
+	cout << "Skriv in ett flyttal: ";
 	cin >> F;
-	cout << "Du skrev in talet " << F << "." << endl;
+	cout << "Du skrev in flyttalet " << F << endl;
 
 	cout << "Skriv in ett heltal och ett flyttal: ";
 	cin >> I;
@@ -48,6 +44,23 @@ int main()
 	cout << setw(9) << I << endl;
 	cout << "Du skrev in flyttalet	";
 	cout << setw(5) << F << endl;
+
+	cout << "Skriv in ett flyttal och ett heltal";
+	cin >> F;
+	cin >> I;
+	cout << "Du skrev in heltalet";
+	cout << setw(8) << I << endl;
+	cout << "Du skrev in flyttalet	";
+	cout << setw(3) << F << endl;
+
+	cout << "Skriv in ett tecken";
+	cin >> T;
+	cout << "Du skev in tecknet" << T << endl;
+
+	cout << "Mata in ett heltal och ett ord: " << endl;
+	cin >> I;
+	cin >> S;
+	cout << "Du matade in talet |" << I << "| och ordet |" << S << "|." << endl;
 
 	return 0;
 }
