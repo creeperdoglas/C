@@ -9,6 +9,7 @@ int main()
 	int I;
 	string S;
 	double F;
+
 	cout << "Mata in ett heltal" << endl;
 	cin >> I;
 	cout << "Du matade in hetalet" << I << endl;
