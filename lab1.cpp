@@ -55,12 +55,21 @@ int main()
 
 	cout << "Skriv in ett tecken";
 	cin >> T;
-	cout << "Du skev in tecknet" << T << endl;
+	cout << "Du skev in tecknet " << T << endl;
 
-	cout << "Mata in ett heltal och ett ord: " << endl;
+	cout << "Skriv in ett ord";
+	cin >> S;
+	cout << "Du skrev in ordet " << S << endl;
+
+	cout << "Skriv in ett heltal och ett ord: ";
 	cin >> I;
 	cin >> S;
 	cout << "Du matade in talet |" << I << "| och ordet |" << S << "|." << endl;
+
+	cout << "Skriv in ett tecken och ett ord: ";
+	cin >> T;
+	cin >> S;
+	cout << "Du skrev in tecknet  " << T << " och ordet " << S << endl;
 
 	return 0;
 }
