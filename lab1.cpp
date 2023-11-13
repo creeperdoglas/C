@@ -105,13 +105,11 @@ int main()
 	getline(cin, S);
 	cout << "Du skrev in \"" << S << "\"." << endl;
 	cout << endl;
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 	cout << "Skriv in en till rad text: ";
 	getline(cin, S);
 	cout << "Du skrev in \"" << S << "\"." << endl;
 	cout << endl;
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 	cout << "Skriv in en rad med tre ord: ";
 	cin >> S;
