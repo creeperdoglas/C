@@ -3,6 +3,7 @@
 #include <string>
 #include <iomanip>
 #include <cmath>
+#include <limits>
 
 using namespace std;
 
@@ -98,14 +99,14 @@ int main()
 	cout << endl;
 
 	cout << "Skriv in en textrad: ";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	getline(cin, S);
-	fflush(stdin);
 	cout << "Du skrev in \"" << S << "\"." << endl;
 	cout << endl;
 
 	cout << "Skriv in en till rad text: ";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	getline(cin, S);
-	fflush(stdin);
 	cout << "Du skrev in \"" << S << "\"." << endl;
 	cout << endl;
 
