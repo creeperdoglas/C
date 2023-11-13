@@ -94,19 +94,20 @@ int main()
 	cout << "Skriv in ett ord och ett tecken: ";
 	cin >> S;
 	cin >> T;
-	fflush(stdin);
 	cout << "Du skrev in \"" << S << "\" och \"" << T << "\"." << endl;
 	cout << endl;
 
-	cout << "Skriv in en textrad: ";
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+	cout << "Skriv in en textrad: ";
 	getline(cin, S);
+	fflush(stdin);
 	cout << "Du skrev in \"" << S << "\"." << endl;
 	cout << endl;
 
 	cout << "Skriv in en till rad text: ";
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	getline(cin, S);
+	fflush(stdin);
 	cout << "Du skrev in \"" << S << "\"." << endl;
 	cout << endl;
 
