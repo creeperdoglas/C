@@ -17,6 +17,7 @@ int main()
 	cin >> I;
 	fflush(stdin);
 	cout << "Du skrev in heltalet " << I << endl;
+	cout << endl;
 
 	cout << "skriv in fem heltal: ";
 	cin >> I;
@@ -34,13 +35,15 @@ int main()
 	cout << " ";
 	cin >> I;
 	fflush(stdin);
-	cout << I;
+	cout << I << endl;
+	cout << endl;
 
 	cout << "Skriv in ett flyttal: ";
 	cin >> F;
 	fflush(stdin);
-	F = std::round(F * 1000.0) / 1000.0;
-	cout << "Du skrev in flyttalet " << F << endl;
+	// F = std::round(F * 1000.0) / 1000.0;
+	cout << "Du skrev in flyttalet " << std::setprecision(3) << std::fixed << F << endl;
+	cout << endl;
 
 	cout << "Skriv in ett heltal och ett flyttal: ";
 	cin >> I;
@@ -49,7 +52,8 @@ int main()
 	cout << "Du skrev in heltalet:";
 	cout << setw(10) << I << endl;
 	cout << "Du skrev in flyttalet:";
-	cout << std::setprecision(4) << std::fixed << F << endl;
+	cout << setw(9) << std::setprecision(4) << std::fixed << F << endl;
+	cout << endl;
 
 	cout << "Skriv in ett flyttal och ett heltal: ";
 	cin >> F;
@@ -58,44 +62,52 @@ int main()
 	cout << setfill('-') << setw(10) << I << setfill(' ') << endl;
 	cout << "Du skrev in flyttalet:";
 	cout << setfill('-') << setw(9) << std::setprecision(4) << std::fixed << F << setfill(' ') << endl;
+	cout << endl;
 
 	cout << "Skriv in ett tecken: ";
 	cin >> T;
 	fflush(stdin);
 	cout << "Du skev in tecknet: " << T << endl;
+	cout << endl;
 
 	cout << "Skriv in ett ord: ";
 	cin >> S;
 	fflush(stdin);
 	cout << "Du skrev in ordet: " << S << endl;
+	cout << endl;
 
 	cout << "Skriv in ett heltal och ett ord: ";
 	cin >> I;
 	cin >> S;
 	fflush(stdin);
 	cout << "Du matade in heltalet |" << I << "| och ordet |" << S << "|." << endl;
+	cout << endl;
 
 	cout << "Skriv in ett tecken och ett ord: ";
 	cin >> T;
 	cin >> S;
 	fflush(stdin);
 	cout << "Du skrev in \"" << S << "\" och \"" << T << "\"." << endl;
+	cout << endl;
 
 	cout << "Skriv in ett ord och ett tecken: ";
 	cin >> S;
 	cin >> T;
 	fflush(stdin);
 	cout << "Du skrev in \"" << S << "\" och \"" << T << "\"." << endl;
+	cout << endl;
 
 	cout << "Skriv in en textrad: ";
 	getline(cin, S);
 	cout << "Du skrev in \"" << S << "\"." << endl;
+	cout << endl;
 
 	cout << "Skriv in en till rad text: ";
 	getline(cin, S);
 	cout << "Du skrev in \"" << S << "\"." << endl;
+	cout << endl;
 
-	cout << "skriv in en rad med tre ord";
+	cout << "skriv in en rad med tre ord: ";
 	cin >> S;
 	cout << "Du skrev in: \"" << S << "\",";
 	cin >> S;
