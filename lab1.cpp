@@ -111,7 +111,7 @@ int main()
 	cout << "Du skrev in \"" << S << "\"." << endl;
 	cout << endl;
 
-	cout << "skriv in en rad med tre ord: ";
+	cout << "Skriv in en rad med tre ord: ";
 	cin >> S;
 	cout << "Du skrev in: \"" << S << "\",";
 	cin >> S;
