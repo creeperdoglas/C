@@ -99,11 +99,13 @@ int main()
 
 	cout << "Skriv in en textrad: ";
 	getline(cin, S);
+	fflush(stdin);
 	cout << "Du skrev in \"" << S << "\"." << endl;
 	cout << endl;
 
 	cout << "Skriv in en till rad text: ";
 	getline(cin, S);
+	fflush(stdin);
 	cout << "Du skrev in \"" << S << "\"." << endl;
 	cout << endl;
 
