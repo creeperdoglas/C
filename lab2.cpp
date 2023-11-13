@@ -94,7 +94,7 @@ int main()
   cout << "Alfabetiska tecken: " << letterCount << endl;
   cout << "Siffertecken......: " << digitCount << endl;
   cout << "Vita tecken.......: " << whitespaceCount << endl;
-
+ cin.ignore(numeric_limits<streamsize>::max(), '\n');
 //del 3
 cout<< "Del 3: Ordhantering " << endl << "Mata in en text: "<< endl;
 while (cin >> word)
