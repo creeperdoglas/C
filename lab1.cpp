@@ -16,10 +16,10 @@ int main()
 	cout << "Skriv in ett heltal: ";
 	cin >> I;
 	fflush(stdin);
-	cout << "Du skrev in heltalet " << I << endl;
+	cout << "Du skrev in heltalet: " << I << endl;
 	cout << endl;
 
-	cout << "skriv in fem heltal: ";
+	cout << "Skriv in fem heltal: ";
 	cin >> I;
 	cout << "Du skrev in heltalen: ";
 	cout << I;
@@ -42,7 +42,7 @@ int main()
 	cin >> F;
 	fflush(stdin);
 	// F = std::round(F * 1000.0) / 1000.0;
-	cout << "Du skrev in flyttalet " << std::setprecision(3) << std::fixed << F << endl;
+	cout << "Du skrev in flyttalet: " << std::setprecision(3) << std::fixed << F << endl;
 	cout << endl;
 
 	cout << "Skriv in ett heltal och ett flyttal: ";
@@ -67,7 +67,7 @@ int main()
 	cout << "Skriv in ett tecken: ";
 	cin >> T;
 	fflush(stdin);
-	cout << "Du skev in tecknet: " << T << endl;
+	cout << "Du skrev in tecknet: " << T << endl;
 	cout << endl;
 
 	cout << "Skriv in ett ord: ";
@@ -80,7 +80,7 @@ int main()
 	cin >> I;
 	cin >> S;
 	fflush(stdin);
-	cout << "Du matade in heltalet |" << I << "| och ordet |" << S << "|." << endl;
+	cout << "Du skrev in heltalet |" << I << "| och ordet |" << S << "|." << endl;
 	cout << endl;
 
 	cout << "Skriv in ett tecken och ett ord: ";
