@@ -9,12 +9,12 @@ using namespace std;
 
 int main()
 {
-  //del 1
+  // del 1
   double start;
   double stop;
-  string ord;
+  string word;
   int letterCount = 0, digitCount = 0, whitespaceCount = 0;
-  string word, shortestWord, longestWord;
+  string shortestWord, longestWord;
   int wordCount = 0;
   int totalLength = 0;
 
@@ -69,18 +69,19 @@ int main()
     }
   }
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  cout << endl;
   // del 2
-  cout << "Del 2: Teckenhantering" <<endl;
-  char buffer[11];      
+  cout << "Del 2: Teckenhantering" << endl;
+  char buffer[11];
   cin.read(buffer, 10); // läs bara 10 characters
-  buffer[10] = '\0';    
-  ord = string(buffer);
+  buffer[10] = '\0';
+  word = string(buffer);
 
-  for (char c : ord)
+  for (char c : word)
   {
     if (isalpha(c))
     {
-      letterCount++; 
+      letterCount++;
     }
     else if (isdigit(c))
     {
@@ -88,17 +89,19 @@ int main()
     }
     else if (isspace(c))
     {
-      whitespaceCount++; 
+      whitespaceCount++;
     }
   }
   cout << "Alfabetiska tecken: " << letterCount << endl;
   cout << "Siffertecken......: " << digitCount << endl;
   cout << "Vita tecken.......: " << whitespaceCount << endl;
- cin.ignore(numeric_limits<streamsize>::max(), '\n');
-//del 3
-cout<< "Del 3: Ordhantering " << endl << "Mata in en text: "<< endl;
-while (cin >> word)
-{
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  cout << endl;
+  // del 3
+  cout << "Del 3: Ordhantering " << endl
+       << "Mata in en text: " << endl;
+  while (cin >> word)
+  {
     wordCount++;
     totalLength += word.length();
 
@@ -111,20 +114,20 @@ while (cin >> word)
     {
       longestWord = word;
     }
+  }
+
+  if (wordCount == 0)
+  {
+    cerr << "Inga ord matades in." << endl; // cerr = standard error stream istället för standard output stream, mindre delay
+    return 1;                               // Error exit
+  }
+
+  double averageLength = static_cast<double>(totalLength) / wordCount;
+
+  cout << "Texten innehöll " << wordCount << " ord." << endl;
+  cout << "Det kortaste order var \"" << shortestWord << "\"  med " << shortestWord.length() << " tecken." << endl;
+  cout << "Det längsta order var \"" << longestWord << "\"  med " << longestWord.length() << " tecken." << endl;
+  cout << "Medelordlängden var  " << std::setprecision(1) << std::fixed << averageLength << " tecken." << endl;
+
+  return 0;
 }
-
-if (wordCount == 0)
-{
-    cerr << "Inga ord matades in." << endl; //cerr = standard error stream istället för standard output stream, mindre delay
-    return 1; // Error exit
-}
-
-double averageLength = static_cast<double>(totalLength) / wordCount;
-
-cout << "Texten innehöll " << wordCount << " ord." << endl;
-cout << "Det kortaste order var \"" << shortestWord << "\"  med " << shortestWord.length() << " tecken." << endl;
-cout << "Det längsta order var \"" << longestWord << "\"  med " << longestWord.length() << " tecken." << endl;
-cout << "Medelordlängden var  " << std::setprecision(1) << std::fixed << averageLength <<" tecken." << endl;
-
-return 0;
-} 
