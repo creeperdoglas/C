@@ -18,7 +18,7 @@ int main()
   int wordCount = 0;
   int totalLength = 0;
 
-  cout << "Del 1: Tempraturtabell" << endl;
+  cout << "Del 1: Temperaturtabell" << endl;
   cout << "Ange startvärde: ";
   cin >> start;
 
@@ -92,14 +92,16 @@ int main()
       whitespaceCount++;
     }
   }
+  cout << "Texten innehöll:" << endl;
   cout << "Alfabetiska tecken: " << letterCount << endl;
   cout << "Siffertecken......: " << digitCount << endl;
   cout << "Vita tecken.......: " << whitespaceCount << endl;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   cout << endl;
   // del 3
-  cout << "Del 3: Ordhantering " << endl
+  cout << "Del 3: Ordhantering" << endl
        << "Mata in en text: " << endl;
+  cout << endl;
   while (cin >> word)
   {
     wordCount++;
