@@ -33,7 +33,7 @@ int main()
     }
   } while (start > stop);
 
-  int I = 12;
+  int I = 9;
   cout << setprecision(2) << setw(7) << "Celsius";
   cout << setprecision(2) << fixed << setw(I) << "Kelvin";
   cout << setprecision(2) << fixed << setw(I) << "Farenheit";
