@@ -33,12 +33,12 @@ int main()
     }
   } while (start > stop);
 
-  int I = 12;
+  int I = 9;
   cout << setprecision(2) << setw(7) << "Celsius";
-  cout << setprecision(2) << setw(12) << "Kelvin";          
-  cout << setprecision(2) << setw(15) << "Fahrenheit";      
-  cout << setprecision(2) << setw(12) << "Réaumur" << endl; 
-  for (int i = 0; i < 7 + 12 + 15 + 12; i++)                
+  cout << setprecision(2) << setw(9) << "Kelvin";          
+  cout << setprecision(2) << setw(13) << "Fahrenheit";      
+  cout << setprecision(2) << setw(11) << "Réaumur" << endl; 
+  for (int i = 0; i < 7 + 9 + 13 + 11; i++)                
   {
     cout << "-";
   }
@@ -47,11 +47,11 @@ int main()
   for (int i = start; i <= stop; i++)
   {
     cout << setprecision(2) << fixed << setw(7) << right << (i);            
-    cout << setprecision(2) << fixed << setw(12) << right << (i + 273.15);   
-    cout << setprecision(2) << fixed << setw(15) << right << (i * 1.8 + 32); 
-    cout << setprecision(2) << fixed << setw(12) << right << (i * 0.8) << endl;
+    cout << setprecision(2) << fixed << setw(9) << right << (i + 273.15);   
+    cout << setprecision(2) << fixed << setw(13) << right << (i * 1.8 + 32); 
+    cout << setprecision(2) << fixed << setw(11) << right << (i * 0.8) << endl;
   }
-  for (int i = 0; i < 7 + 12 + 15 + 12; i++) 
+  for (int i = 0; i < 7 + 9 + 13 + 11; i++)
   {
     cout << "-";
   }
@@ -114,8 +114,8 @@ int main()
   double averageLength = static_cast<double>(totalLength) / wordCount;
 
   cout << "Texten innehöll " << wordCount << " ord." << endl;
-  cout << "Det kortaste order var \"" << shortestWord << "\"  med " << shortestWord.length() << " tecken." << endl;
-  cout << "Det längsta order var \"" << longestWord << "\"  med " << longestWord.length() << " tecken." << endl;
+  cout << "Det kortaste ordet var \"" << shortestWord << "\"  med " << shortestWord.length() << "tecken." << endl;
+  cout << "Det längsta ordet var \"" << longestWord << "\"  med " << longestWord.length() << "tecken." << endl;
   cout << "Medelordlängden var  " << std::setprecision(1) << std::fixed << averageLength << " tecken." << endl;
 
   return 0;
