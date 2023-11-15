@@ -105,19 +105,18 @@ int main()
       longestWord = word;
     }
   }
-
+  double averageLength = static_cast<double>(totalLength) / wordCount;
   if (wordCount == 0)
   {
     cerr << "Inga ord matades in." << endl << endl; // cerr = standard error stream istället för standard output stream, mindre delay
-    return 0; //optimalt att ha return 1 istället då det gör det väldigt lätt att felsöka i ett riktigt program, men automaträttningen fick spel
+    //optimalt att ha return 1  då det gör det väldigt lätt att felsöka i ett riktigt program, men automaträttningen fick spel så blev if sats istället
   }
-
-  double averageLength = static_cast<double>(totalLength) / wordCount;
-
+  else
+{
   cout << "Texten innehöll " << wordCount << " ord." << endl;
   cout << "Det kortaste ordet var \"" << shortestWord << "\" med " << shortestWord.length() << " tecken." << endl;
   cout << "Det längsta ordet var \"" << longestWord << "\" med " << longestWord.length() << " tecken." << endl;
   cout << "Medelordlängden var " << std::setprecision(1) << std::fixed << averageLength << " tecken." << endl;
-
+}
   return 0;
 }
