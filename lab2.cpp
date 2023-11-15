@@ -29,44 +29,31 @@ int main()
 
     if (start > stop)
     {
-      cout << "Felaktigt värde!" << endl;
+      cout << "Felaktigt slutvärde!" << endl;
     }
   } while (start > stop);
 
-  int I = 9;
+  int I = 12;
   cout << setprecision(2) << setw(7) << "Celsius";
-  cout << setprecision(2) << fixed << setw(I) << "Kelvin";
-  cout << setprecision(2) << fixed << setw(I) << "Farenheit";
-  cout << setprecision(2) << fixed << setw(I) << "Réaumur" << endl;
-  for (int i = 0; i < (I * 3 + 7); i++)
+  cout << setprecision(2) << setw(12) << "Kelvin";          
+  cout << setprecision(2) << setw(15) << "Fahrenheit";      
+  cout << setprecision(2) << setw(12) << "Réaumur" << endl; 
+  for (int i = 0; i < 7 + 12 + 15 + 12; i++)                
   {
-    if (i < ((I * 3 + 7) - 1))
-    {
-      cout << "-";
-    }
-    else
-    {
-      cout << "-" << endl;
-    }
+    cout << "-";
   }
+  cout << endl;
 
   for (int i = start; i <= stop; i++)
   {
-    cout << setprecision(2) << fixed << setw(7) << (i);
-    cout << setprecision(2) << fixed << setw(I) << (i + 273.15);
-    cout << setprecision(2) << fixed << setw(I) << (i * 1.8 + 32);
-    cout << setprecision(2) << fixed << setw(I) << (i * 0.8) << endl;
+    cout << setprecision(2) << fixed << setw(7) << right << (i);            
+    cout << setprecision(2) << fixed << setw(12) << right << (i + 273.15);   
+    cout << setprecision(2) << fixed << setw(15) << right << (i * 1.8 + 32); 
+    cout << setprecision(2) << fixed << setw(12) << right << (i * 0.8) << endl;
   }
-  for (int i = 0; i < (I * 3 + 7); i++)
+  for (int i = 0; i < 7 + 12 + 15 + 12; i++) 
   {
-    if (i < ((I * 3 + 7) - 1))
-    {
-      cout << "-";
-    }
-    else
-    {
-      cout << "-" << endl;
-    }
+    cout << "-";
   }
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   cout << endl;
@@ -93,14 +80,14 @@ int main()
     }
   }
   cout << "Texten innehöll:" << endl;
-  cout << "Alfabetiska tecken: " << letterCount << endl;
-  cout << "Siffertecken......: " << digitCount << endl;
-  cout << "Vita tecken.......: " << whitespaceCount << endl;
+  cout << "Alfabetiska tecken:" << letterCount << endl;
+  cout << "Siffertecken......:" << digitCount << endl;
+  cout << "Vita tecken.......:" << whitespaceCount << endl;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   cout << endl;
   // del 3
   cout << "Del 3: Ordhantering" << endl
-       << "Mata in en text: " << endl;
+       << "Mata in en text:" << endl;
   cout << endl;
   while (cin >> word)
   {
