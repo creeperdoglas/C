@@ -57,6 +57,7 @@ int main()
   }
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   cout << endl;
+  cout << endl;
   // del 2
   cout << "Del 2: Teckenhantering" << endl;
   char buffer[11];
