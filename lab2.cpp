@@ -109,7 +109,7 @@ int main()
   if (wordCount == 0)
   {
     cerr << "Inga ord matades in." << endl << endl; // cerr = standard error stream istället för standard output stream, mindre delay
-    return 1;                               // Error exit
+    //return 1; optimalt att ha med då det gör det väldigt lätt att felsöka i ett riktigt program, men automaträttningen fick spel
   }
 
   double averageLength = static_cast<double>(totalLength) / wordCount;
