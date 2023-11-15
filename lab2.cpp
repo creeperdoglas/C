@@ -37,7 +37,7 @@ int main()
   cout << setprecision(2) << setw(7) << "Celsius";
   cout << setprecision(2) << setw(9) << "Kelvin";          
   cout << setprecision(2) << setw(13) << "Fahrenheit";      
-  cout << setprecision(2) << setw(11) << "Réaumur" << endl; 
+  cout << setprecision(2) << setw(11) << "Reaumur" << endl; 
   for (int i = 0; i < 7 + 9 + 13 + 11; i++)                
   {
     cout << "-";
@@ -116,7 +116,7 @@ int main()
   cout << "Texten innehöll " << wordCount << " ord." << endl;
   cout << "Det kortaste ordet var \"" << shortestWord << "\"  med " << shortestWord.length() << "tecken." << endl;
   cout << "Det längsta ordet var \"" << longestWord << "\"  med " << longestWord.length() << "tecken." << endl;
-  cout << "Medelordlängden var  " << std::setprecision(1) << std::fixed << averageLength << " tecken." << endl;
+  cout << "Medelordlängden var " << std::setprecision(1) << std::fixed << averageLength << " tecken." << endl;
 
   return 0;
 }
