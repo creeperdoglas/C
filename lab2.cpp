@@ -108,7 +108,7 @@ int main()
 
   if (wordCount == 0)
   {
-    cerr << "Inga ord matades in." << endl; // cerr = standard error stream istället för standard output stream, mindre delay
+    cerr << "Inga ord matades in." << endl << endl; // cerr = standard error stream istället för standard output stream, mindre delay
     return 1;                               // Error exit
   }
 
