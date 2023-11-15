@@ -17,10 +17,18 @@ int main()
   string shortestWord, longestWord;
   int wordCount = 0;
   int totalLength = 0;
-
+  
   cout << "Del 1: Temperaturtabell" << endl;
-  cout << "Ange startvärde: ";
-  cin >> start;
+  do
+  {
+    cout << "Ange startvärde: ";
+    cin >> start;
+    if (start < -273.0)
+    {
+      cout << "Felaktigt startvärde!" << endl;
+    }
+} while (start < -273.0);
+  
 
   do
   {
