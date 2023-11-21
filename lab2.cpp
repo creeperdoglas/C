@@ -10,121 +10,114 @@ using namespace std;
 int main()
 {
   // del 1
-  double start;
-  double stop;
-  string word;
-  int letterCount = 0, digitCount = 0, whitespaceCount = 0;
-  string shortestWord, longestWord;
-  int wordCount = 0;
-  int totalLength = 0;
-  
   cout << "Del 1: Temperaturtabell" << endl;
+
+  double start, stop;
   do
   {
     cout << "Ange startvärde: ";
     cin >> start;
-    if (start < -273.0)
+    if (start < -273.15)
     {
       cout << "Felaktigt startvärde!" << endl;
     }
-} while (start < -273.0);
-  
+  } while (start < -273.15);
 
   do
   {
     cout << "Ange slutvärde: ";
     cin >> stop;
-
     if (start > stop)
     {
       cout << "Felaktigt slutvärde!" << endl;
     }
   } while (start > stop);
 
-  int I = 9;
-  cout << setprecision(2) << setw(7) << "Celsius";
-  cout << setprecision(2) << setw(9) << "Kelvin";          
-  cout << setprecision(2) << setw(13) << "Fahrenheit";      
-  cout << setprecision(2) << setw(10) << "Reaumur" << endl; 
-  for (int i = 0; i < 7 + 9 + 13 + 10; i++)                
-  {
+  cout << setprecision(2) << setw(7) << "Celsius"
+       << setw(9) << "Kelvin"
+       << setw(13) << "Fahrenheit"
+       << setw(10) << "Reaumur" << endl;
+
+  for (int i = 0; i < 7 + 9 + 13 + 10; i++)
     cout << "-";
-  }
   cout << endl;
 
   for (int i = start; i <= stop; i++)
   {
-    cout << setprecision(2) << fixed << setw(7) << right << (i);            
-    cout << setprecision(2) << fixed << setw(9) << right << (i + 273.15);   
-    cout << setprecision(2) << fixed << setw(13) << right << (i * 1.8 + 32); 
-    cout << setprecision(2) << fixed << setw(10) << right << (i * 0.8) << endl;
+    cout << setprecision(2) << fixed << setw(7) << right << (i)
+         << setw(9) << (i + 273.15)
+         << setw(13) << (i * 1.8 + 32)
+         << setw(10) << (i * 0.8) << endl;
   }
+
   for (int i = 0; i < 7 + 9 + 13 + 10; i++)
-  {
     cout << "-";
-  }
+  cout << endl
+       << endl;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
-  cout << endl;
-  cout << endl;
+
   // del 2
   cout << "Del 2: Teckenhantering" << endl;
   char buffer[11];
-  cin.read(buffer, 10); // läs bara 10 characters
-  buffer[10] = '\0';
-  word = string(buffer);
+  int letterCount = 0, digitCount = 0, whitespaceCount = 0;
 
+  for (int i = 0; i < 10; ++i)
+  {
+    buffer[i] = cin.get();
+    if (buffer[i] == '\n')
+    {
+      buffer[i] = '\0';
+      break;
+    }
+  }
+  buffer[10] = '\0'; // Null-terminate string
+
+  string word(buffer);
   for (char c : word)
   {
     if (isalpha(c))
-    {
       letterCount++;
-    }
     else if (isdigit(c))
-    {
       digitCount++;
-    }
     else if (isspace(c))
-    {
       whitespaceCount++;
-    }
   }
-  cout << "Texten innehöll:" << endl;
-  cout << "Alfabetiska tecken:" << letterCount << endl;
-  cout << "Siffertecken......:" << digitCount << endl;
-  cout << "Vita tecken.......:" << whitespaceCount << endl;
-  cin.ignore(numeric_limits<streamsize>::max(), '\n');
-  cout << endl;
+
+  cout << "Texten innehöll:" << endl
+       << "Alfabetiska tecken:" << letterCount << endl
+       << "Siffertecken......:" << digitCount << endl
+       << "Vita tecken.......:" << whitespaceCount << endl;
+
   // del 3
   cout << "Del 3: Ordhantering" << endl
        << "Mata in en text:" << endl;
-  cout << endl;
+
+  int wordCount = 0, totalLength = 0;
+  string shortestWord, longestWord;
+
   while (cin >> word)
   {
     wordCount++;
     totalLength += word.length();
 
     if (wordCount == 1 || word.length() < shortestWord.length())
-    {
       shortestWord = word;
-    }
 
     if (wordCount == 1 || word.length() > longestWord.length())
-    {
       longestWord = word;
-    }
   }
 
-  if (wordCount == 0) 
+  if (wordCount == 0)
   {
-    cout << "Inga ord matades in." << endl; // cerr = standard error stream istället för standard output stream, mindre delay, det man bör använda men automarättning fick absolut spel
-    return 1;  //error exit, lätt att felsöka
+    cout << "Inga ord matades in." << endl;
+    return 1;
   }
-  
-    double averageLength = static_cast<double>(totalLength) / wordCount;
-  cout << "Texten innehöll " << wordCount << " ord." << endl;
-  cout << "Det kortaste ordet var \"" << shortestWord << "\" med " << shortestWord.length() << " tecken." << endl;
-  cout << "Det längsta ordet var \"" << longestWord << "\" med " << longestWord.length() << " tecken." << endl;
-  cout << "Medelordlängden var " << std::setprecision(1) << std::fixed << averageLength << " tecken." << endl;
+
+  double averageLength = static_cast<double>(totalLength) / wordCount;
+  cout << "Texten innehöll " << wordCount << " ord." << endl
+       << "Det kortaste ordet var \"" << shortestWord << "\" med " << shortestWord.length() << " tecken." << endl
+       << "Det längsta ordet var \"" << longestWord << "\" med " << longestWord.length() << " tecken." << endl
+       << "Medelordlängden var " << setprecision(1) << fixed << averageLength << " tecken." << endl;
 
   return 0;
 }
