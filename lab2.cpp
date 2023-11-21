@@ -88,6 +88,7 @@ int main()
        << "Siffertecken......:" << digitCount << endl
        << "Vita tecken.......:" << whitespaceCount << endl
        << endl;
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
   // del 3
   cout << "Del 3: Ordhantering" << endl
