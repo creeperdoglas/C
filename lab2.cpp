@@ -63,11 +63,15 @@ int main()
 
   for (int i = 0; i < 10; ++i)
   {
-    buffer[i] = cin.get();
-    if (buffer[i] == '\n')
+    int ch = cin.get();
+    if (ch == EOF)
     {
       buffer[i] = '\0';
       break;
+    }
+    else
+    {
+      buffer[i] = static_cast<char>(ch);
     }
   }
   buffer[10] = '\0'; // Null-terminate string
@@ -88,6 +92,7 @@ int main()
        << "Siffertecken......:" << digitCount << endl
        << "Vita tecken.......:" << whitespaceCount << endl
        << endl;
+
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
   // del 3
