@@ -86,11 +86,13 @@ int main()
   cout << "Texten innehöll:" << endl
        << "Alfabetiska tecken:" << letterCount << endl
        << "Siffertecken......:" << digitCount << endl
-       << "Vita tecken.......:" << whitespaceCount << endl;
+       << "Vita tecken.......:" << whitespaceCount << endl
+       << endl;
 
   // del 3
   cout << "Del 3: Ordhantering" << endl
-       << "Mata in en text:" << endl;
+       << "Mata in en text:" << endl
+       << endl;
 
   int wordCount = 0, totalLength = 0;
   string shortestWord, longestWord;
