@@ -12,7 +12,7 @@ int main()
   // del 1
   cout << "Del 1: Temperaturtabell" << endl;
 
-  double start, stop;
+  double start{}, stop{};
   do
   {
     cout << "Ange startvärde: ";
@@ -59,7 +59,7 @@ int main()
   // del 2
   cout << "Del 2: Teckenhantering" << endl;
   char buffer[11];
-  int letterCount = 0, digitCount = 0, whitespaceCount = 0;
+  int letterCount{}, digitCount{}, whitespaceCount{};
 
   for (int i = 0; i < 10; ++i)
   {
@@ -100,8 +100,8 @@ int main()
        << "Mata in en text:" << endl
        << endl;
 
-  int wordCount = 0, totalLength = 0;
-  string shortestWord, longestWord;
+  int wordCount{}, totalLength{};
+  string shortestWord{}, longestWord{};
 
   while (cin >> word)
   {
