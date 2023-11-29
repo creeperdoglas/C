@@ -8,12 +8,14 @@ using namespace std;
 
 int fakultet(int n)
 {
-    int value{n};
+    int value{1};
 
     if (n == 0)
+    {
         return 1;
+    }
 
-    for (int i{1}; i < n; i++)
+    for (int i{2}; i <= n; i++)
     {
         value *= i;
     }
@@ -31,7 +33,7 @@ string multiple_words(string text, int multiplier)
     return return_val;
 };
 
-void swap(int a, float b)
+void swap(int &a, float &b)
 {
     int storage{a};
     a = ceil(b);
@@ -49,7 +51,7 @@ void length(const string &text_1, const string &text_2, int &total_length, float
 
 void automate_one()
 {
-    int n;
+    int n{};
     cout << "Mata in ett heltal: ";
     cin >> n;
     cout << "Fakulteten av " << n << " är " << fakultet(n) << endl;
@@ -57,7 +59,7 @@ void automate_one()
 
 void automate_two()
 {
-    int multiplier;
+    int multiplier{};
     string text;
     cout << "Mata in en text och ett heltal: ";
     cin >> text;
@@ -67,8 +69,8 @@ void automate_two()
 
 void automate_three()
 {
-    int a;
-    float b;
+    int a{};
+    float b{};
     cout << "Mata in ett heltal och ett flyttal: ";
     cin >> a;
     cin >> b;
@@ -92,7 +94,7 @@ void automate_four()
 
 int main()
 {
-    int num;
+    int num{};
     cout << "Välkommen till huvudmenyn!" << endl;
     while (num != 5)
     {
@@ -103,23 +105,26 @@ int main()
              << "5. Avsluta programmet." << endl
              << "Val: ";
         cin >> num;
-
         if ((num < 1) or (num > 5))
         {
             cout << "Fel val!" << endl;
         }
+
         if (num == 1)
         {
             automate_one();
         }
+
         if (num == 2)
         {
             automate_two();
         }
+
         if (num == 3)
         {
             automate_three();
         }
+
         if (num == 4)
         {
             automate_four();
