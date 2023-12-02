@@ -58,7 +58,7 @@ int main()
 
   // del 2
   cout << "Del 2: Teckenhantering" << endl;
-  char buffer[11];
+  char buffer[11]{};
   int letterCount{}, digitCount{}, whitespaceCount{};
 
   for (int i = 0; i < 10; ++i)
@@ -101,7 +101,7 @@ int main()
        << endl;
 
   int wordCount{}, totalLength{};
-  string shortestWord{}, longestWord{};
+  string shortestWord, longestWord;
 
   while (cin >> word)
   {
