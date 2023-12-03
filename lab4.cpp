@@ -1,3 +1,4 @@
+// melgu374: Samarbetat med eliom790, Elias Omrane, samma program
 #include <iostream>
 #include <string>
 #include <vector>
@@ -58,40 +59,40 @@ bool CompareDeltagare(const Deltagar_t &a, const Deltagar_t &b)
   return a.tider.front() < b.tider.front();
 }
 
-void Print(const std::vector<Deltagar_t> &vec)
+void Print(const vector<Deltagar_t> &vec)
 {
-  int maxFirstNameLength = std::string("Förnamn").length();
-  int maxLastNameLength = std::string("Efternamn").length();
-  int maxClubLength = std::string("Klubb").length();
+  int maxFirstNameLength = string("Förnamn").length();
+  int maxLastNameLength = string("Efternamn").length();
+  int maxClubLength = string("Klubb").length();
 
   for (const auto &deltagare : vec)
   {
-    maxFirstNameLength = std::max(maxFirstNameLength, static_cast<int>(deltagare.namn.length()));
-    maxLastNameLength = std::max(maxLastNameLength, static_cast<int>(deltagare.efternamn.length()));
-    maxClubLength = std::max(maxClubLength, static_cast<int>(deltagare.klubb.length()));
+    maxFirstNameLength = max(maxFirstNameLength, static_cast<int>(deltagare.namn.length()));
+    maxLastNameLength = max(maxLastNameLength, static_cast<int>(deltagare.efternamn.length()));
+    maxClubLength = max(maxClubLength, static_cast<int>(deltagare.klubb.length()));
   }
 
-  std::cout << std::right << std::setw(maxLastNameLength) << "Efternamn"
-            << std::setw(4) << ""
-            << std::right << std::setw(maxFirstNameLength) << "Förnamn"
-            << std::setw(10) << ""
-            << std::right << std::setw(maxClubLength) << "Klubb"
-            << ": Tider" << std::endl;
-  std::cout << std::string(maxLastNameLength + 4 + maxFirstNameLength + 10 + maxClubLength + 7, '=') << std::endl;
+  cout << right << setw(maxLastNameLength) << "Efternamn"
+       << setw(2) << ""
+       << right << setw(maxFirstNameLength) << "Förnamn"
+       << setw(6) << ""
+       << right << setw(maxClubLength) << "Klubb"
+       << ": Tider" << endl;
+  cout << string(maxLastNameLength + 4 + maxFirstNameLength + 10 + maxClubLength + 1, '=') << endl;
 
   for (const auto &deltagare : vec)
   {
-    std::cout << std::right << std::setw(maxLastNameLength) << deltagare.efternamn
-              << std::setw(4) << ""
-              << std::right << std::setw(maxFirstNameLength) << deltagare.namn
-              << std::setw(10) << ""
-              << std::right << std::setw(maxClubLength) << deltagare.klubb
-              << ": ";
+    cout << right << setw(maxLastNameLength) << deltagare.efternamn
+         << setw(2) << ""
+         << right << setw(maxFirstNameLength) << deltagare.namn
+         << setw(6) << ""
+         << right << setw(maxClubLength) << deltagare.klubb
+         << ": ";
     for (const auto &tid : deltagare.tider)
     {
-      std::cout << std::left << std::fixed << std::setprecision(2) << tid << " ";
+      cout << left << fixed << setprecision(2) << tid << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
   }
 }
 

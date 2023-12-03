@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int fakultet(int n)
+int fakultet(const int &n)
 {
     int value{1};
 
@@ -23,10 +23,10 @@ int fakultet(int n)
     return value;
 };
 
-string multiple_words(string text, int multiplier)
+string multiple_words(const string &text, const int &multiplier)
 {
     string return_val;
-    for (int i = 0; i < multiplier; ++i)
+    for (int i{}; i < multiplier; ++i)
     {
         return_val += text;
     }
