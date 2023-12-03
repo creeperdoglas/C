@@ -73,17 +73,17 @@ void Print(const vector<Deltagar_t> &vec)
   }
 
   cout << right << setw(maxLastNameLength) << "Efternamn"
-       << setw(2) << ""
+       << setw(1) << ""
        << right << setw(maxFirstNameLength) << "Förnamn"
        << setw(6) << ""
        << right << setw(maxClubLength) << "Klubb"
        << ": Tider" << endl;
-  cout << string(maxLastNameLength + 4 + maxFirstNameLength + 10 + maxClubLength + 1, '=') << endl;
+  cout << string(maxLastNameLength + 4 + maxFirstNameLength + 10 + maxClubLength, '=') << endl;
 
   for (const auto &deltagare : vec)
   {
     cout << right << setw(maxLastNameLength) << deltagare.efternamn
-         << setw(2) << ""
+         << setw(1) << ""
          << right << setw(maxFirstNameLength) << deltagare.namn
          << setw(6) << ""
          << right << setw(maxClubLength) << deltagare.klubb
