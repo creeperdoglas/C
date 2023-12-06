@@ -58,39 +58,24 @@ bool CompareDeltagare(const Deltagar_t &a, const Deltagar_t &b)
 {
   return a.tider.front() < b.tider.front();
 }
-
 void Print(const vector<Deltagar_t> &vec)
 {
-  int maxFirstNameLength = string("Förnamn").length();
-  int maxLastNameLength = string("Efternamn").length();
-  int maxClubLength = string("Klubb").length();
+
+  // Headers
+  cout << setw(1) << right << "Efternamn"
+       << setw(10) << right << "Förnamn"
+       << setw(23) << right << "Klubb: Tider" << endl;
+  cout << string(42, '=') << endl;
 
   for (const auto &deltagare : vec)
   {
-    maxFirstNameLength = max(maxFirstNameLength, static_cast<int>(deltagare.namn.length()));
-    maxLastNameLength = max(maxLastNameLength, static_cast<int>(deltagare.efternamn.length()));
-    maxClubLength = max(maxClubLength, static_cast<int>(deltagare.klubb.length()));
-  }
+    cout << setw(9) << right << deltagare.efternamn
+         << setw(10) << right << deltagare.namn
+         << setw(16) << right << deltagare.klubb << ":";
 
-  cout << right << setw(maxLastNameLength) << "Efternamn"
-       << setw(1) << ""
-       << right << setw(maxFirstNameLength) << "Förnamn"
-       << setw(6) << ""
-       << right << setw(maxClubLength) << "Klubb"
-       << ": Tider" << endl;
-  cout << string(maxLastNameLength + 4 + maxFirstNameLength + 10 + maxClubLength, '=') << endl;
-
-  for (const auto &deltagare : vec)
-  {
-    cout << right << setw(maxLastNameLength) << deltagare.efternamn
-         << setw(1) << ""
-         << right << setw(maxFirstNameLength) << deltagare.namn
-         << setw(6) << ""
-         << right << setw(maxClubLength) << deltagare.klubb
-         << ": ";
     for (const auto &tid : deltagare.tider)
     {
-      cout << left << fixed << setprecision(2) << tid << " ";
+      cout << " " << fixed << setprecision(2) << tid;
     }
     cout << endl;
   }
