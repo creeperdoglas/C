@@ -63,7 +63,7 @@ void Print(const vector<Deltagar_t> &vec)
 
   // Headers
   cout << setw(1) << right << "Efternamn"
-       << setw(10) << right << "Förnamn"
+       << setw(11) << right << "Förnamn"
        << setw(23) << right << "Klubb: Tider" << endl;
   cout << string(42, '=') << endl;
 

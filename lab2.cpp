@@ -13,7 +13,7 @@ int main()
   cout << "Del 1: Temperaturtabell" << endl;
 
   double start{}, stop{};
-  
+
   do
   {
     cout << "Ange startvärde: ";
@@ -63,8 +63,8 @@ int main()
 
   char buffer[11]{};
   int letterCount{}, digitCount{}, whitespaceCount{};
-
   int index = 0;
+  
   while (index < 10)
   {
     int ch = cin.get();
