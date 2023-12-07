@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int fakultet(const int &n)
+int fakultet(const int n)
 {
     int value{1};
 
@@ -23,7 +23,7 @@ int fakultet(const int &n)
     return value;
 };
 
-string multiple_words(const string &text, const int &multiplier)
+string multiple_words(const string &text, const int multiplier)
 {
     string return_val;
     for (int i{}; i < multiplier; ++i)
@@ -109,27 +109,22 @@ int main()
         {
             cout << "Fel val!" << endl;
         }
-
         if (num == 1)
         {
             automate_one();
         }
-
         if (num == 2)
         {
             automate_two();
         }
-
         if (num == 3)
         {
             automate_three();
         }
-
         if (num == 4)
         {
             automate_four();
         }
     }
-
     cout << "Ha en bra dag!" << endl;
 };

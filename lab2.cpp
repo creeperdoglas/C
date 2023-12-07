@@ -13,6 +13,7 @@ int main()
   cout << "Del 1: Temperaturtabell" << endl;
 
   double start{}, stop{};
+  
   do
   {
     cout << "Ange startvärde: ";
@@ -56,27 +57,27 @@ int main()
        << endl;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
+
   // del 2
   cout << "Del 2: Teckenhantering" << endl;
+
   char buffer[11]{};
   int letterCount{}, digitCount{}, whitespaceCount{};
 
-  for (int i = 0; i < 10; ++i)
+  int index = 0;
+  while (index < 10)
   {
     int ch = cin.get();
-    if (ch == EOF)
-    {
-      buffer[i] = '\0';
+    if (cin.eof())
+    { // Kontrollera om EOF (Ctrl+D) har nåtts
       break;
     }
-    else
-    {
-      buffer[i] = static_cast<char>(ch);
-    }
+    buffer[index++] = static_cast<char>(ch);
   }
-  buffer[10] = '\0'; // Null-terminate string
+  buffer[index] = '\0'; // Null-terminate string
 
   string word(buffer);
+
   for (char c : word)
   {
     if (isalpha(c))
@@ -92,8 +93,8 @@ int main()
        << "Siffertecken......:" << digitCount << endl
        << "Vita tecken.......:" << whitespaceCount << endl
        << endl;
-
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
 
   // del 3
   cout << "Del 3: Ordhantering" << endl
@@ -122,6 +123,7 @@ int main()
   }
 
   double averageLength = static_cast<double>(totalLength) / wordCount;
+
   cout << "Texten innehöll " << wordCount << " ord." << endl
        << "Det kortaste ordet var \"" << shortestWord << "\" med " << shortestWord.length() << " tecken." << endl
        << "Det längsta ordet var \"" << longestWord << "\" med " << longestWord.length() << " tecken." << endl
