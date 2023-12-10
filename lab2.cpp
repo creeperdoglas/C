@@ -73,7 +73,7 @@ int main()
 
   while (count < 10 && cin.get(ch)) // Läs in upp till 10 tecken
   {
-    if (cin.eof()) // Kontrollera om EOF (Ctrl+D) har nåtts
+    if (cin.eof()) // Kontrollera om EOF (Ctrl+D)/Z på linux? har nåtts
     {
       break;
     }
