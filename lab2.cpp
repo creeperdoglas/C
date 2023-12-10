@@ -16,6 +16,8 @@ int main()
   char buffer[11]{};
   int letterCount{}, digitCount{}, whitespaceCount{};
   int index{0};
+  char ch{};
+  int count = {0};
   double averageLength;
 
   // del 1
@@ -69,16 +71,22 @@ int main()
   // del 2
   cout << "Del 2: Teckenhantering" << endl;
 
-  while (index < 10)
+  while (count < 10 && cin.get(ch)) // Läs in upp till 10 tecken
   {
-    int ch = cin.get();
-    if (cin.eof())
-    { // Kontrollera om EOF (Ctrl+D) har nåtts
+    if (cin.eof()) // Kontrollera om EOF (Ctrl+D) har nåtts
+    {
       break;
     }
-    buffer[index++] = static_cast<char>(ch);
+
+    if (isalpha(ch))
+      letterCount++;
+    else if (isdigit(ch))
+      digitCount++;
+    else if (isspace(ch))
+      whitespaceCount++;
+
+    count++; // Öka räknaren för varje inläst tecken
   }
-  buffer[index] = '\0'; // Null-terminate string
 
   string word(buffer);
 
@@ -122,7 +130,7 @@ int main()
     cout << "Inga ord matades in." << endl;
     return 1;
   }
-  
+
   averageLength = static_cast<double>(totalLength) / wordCount;
 
   cout << "Texten innehöll " << wordCount << " ord." << endl
