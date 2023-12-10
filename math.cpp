@@ -1,14 +1,16 @@
 // melgu374: Samarbetat med eliom790, Elias Omrane, samma program
+
 #include <iostream>
 #include <string>
 #include <cmath>
 #include <iomanip>
+#include <limits>
 
 using namespace std;
 
 int fakultet(const int n)
 {
-    int value{1};
+    int value = 1;
 
     if (n == 0)
     {
@@ -35,7 +37,7 @@ string multiple_words(const string &text, const int multiplier)
 
 void swap(int &a, float &b)
 {
-    int storage{a};
+    int storage = a;
     a = ceil(b);
     b = storage;
 
@@ -51,7 +53,7 @@ void length(const string &text_1, const string &text_2, int &total_length, float
 
 void automate_one()
 {
-    int n{};
+    int n = 0;
     cout << "Mata in ett heltal: ";
     cin >> n;
     cout << "Fakulteten av " << n << " är " << fakultet(n) << endl;
@@ -59,7 +61,7 @@ void automate_one()
 
 void automate_two()
 {
-    int multiplier{};
+    int multiplier = 0;
     string text;
     cout << "Mata in en text och ett heltal: ";
     cin >> text;
@@ -69,11 +71,10 @@ void automate_two()
 
 void automate_three()
 {
-    int a{};
-    float b{};
+    int a = 0;
+    float b = 0.0;
     cout << "Mata in ett heltal och ett flyttal: ";
-    cin >> a;
-    cin >> b;
+    cin >> a >> b;
     swap(a, b);
 }
 
@@ -81,11 +82,10 @@ void automate_four()
 {
     string text_1;
     string text_2;
-    int total_length{};
-    float mean_length{};
+    int total_length = 0;
+    float mean_length = 0;
     cout << "Mata in två ord: ";
-    cin >> text_1;
-    cin >> text_2;
+    cin >> text_1 >> text_2;
     length(text_1, text_2, total_length, mean_length);
 
     cout << "Totallängd: " << total_length << endl;
@@ -94,7 +94,7 @@ void automate_four()
 
 int main()
 {
-    int num{};
+    int num = 0;
     cout << "Välkommen till huvudmenyn!" << endl;
     while (num != 5)
     {

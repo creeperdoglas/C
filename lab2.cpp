@@ -9,10 +9,18 @@ using namespace std;
 
 int main()
 {
-  // del 1
-  cout << "Del 1: Temperaturtabell" << endl;
 
   double start{}, stop{};
+  int wordCount{}, totalLength{};
+  string shortestWord, longestWord;
+  char buffer[11]{};
+  int letterCount{}, digitCount{}, whitespaceCount{};
+  int index{0};
+  double averageLength;
+
+  // del 1
+  
+  cout << "Del 1: Temperaturtabell" << endl;
 
   do
   {
@@ -43,7 +51,7 @@ int main()
     cout << "-";
   cout << endl;
 
-  for (int i = start; i <= stop; i++)
+  for (int i{static_cast<int>(start)}; i <= static_cast<int>(stop); i++)
   {
     cout << setprecision(2) << fixed << setw(7) << right << (i)
          << setw(9) << (i + 273.15)
@@ -61,10 +69,6 @@ int main()
   // del 2
   cout << "Del 2: Teckenhantering" << endl;
 
-  char buffer[11]{};
-  int letterCount{}, digitCount{}, whitespaceCount{};
-  int index = 0;
-  
   while (index < 10)
   {
     int ch = cin.get();
@@ -101,9 +105,6 @@ int main()
        << "Mata in en text:" << endl
        << endl;
 
-  int wordCount{}, totalLength{};
-  string shortestWord, longestWord;
-
   while (cin >> word)
   {
     wordCount++;
@@ -121,8 +122,8 @@ int main()
     cout << "Inga ord matades in." << endl;
     return 1;
   }
-
-  double averageLength = static_cast<double>(totalLength) / wordCount;
+  
+  averageLength = static_cast<double>(totalLength) / wordCount;
 
   cout << "Texten innehöll " << wordCount << " ord." << endl
        << "Det kortaste ordet var \"" << shortestWord << "\" med " << shortestWord.length() << " tecken." << endl
