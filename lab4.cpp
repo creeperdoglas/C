@@ -8,33 +8,33 @@
 #include "lab4.h"
 using namespace std;
 
-void GetInfo(vector<Deltagar_t> &vec)
+void get_info(vector<Deltagar_Type> &vec)
 {
-  Deltagar_t Deltagar{};
+  Deltagar_Type deltagar{};
   string rad;
   cout << "Mata in deltagare:" << endl;
   while (true)
   {
     // Läs in förnamn
-    cin >> Deltagar.namn;
-    if (Deltagar.namn == "KLAR")
+    cin >> deltagar.namn;
+    if (deltagar.namn == "KLAR")
     {
       break;
     }
 
     // Läs in efternamn
-    cin >> Deltagar.efternamn;
+    cin >> deltagar.efternamn;
 
     // // Rensa inmatningsbufferten
-    // cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    //cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     // Läs in resten av raden som klubb
-    getline(cin, Deltagar.klubb);
+    getline(cin, deltagar.klubb);
 
-    vec.push_back(Deltagar);
+    vec.push_back(deltagar);
   }
 }
-void GetTime(vector<Deltagar_t> &vec)
+void get_time(vector<Deltagar_Type> &vec)
 {
   for (size_t i = 0; i < vec.size(); ++i)
   {
@@ -47,35 +47,31 @@ void GetTime(vector<Deltagar_t> &vec)
     }
   }
 }
-void SortTimes(vector<Deltagar_t> &vec)
+void sort_times(vector<Deltagar_Type> &vec)
 {
   for (size_t i = 0; i < vec.size(); ++i)
   {
-    std::sort(vec[i].tider.begin(), vec[i].tider.end());
+    sort(vec[i].tider.begin(), vec[i].tider.end());
   }
 }
-bool CompareDeltagare(const Deltagar_t &a, const Deltagar_t &b)
+void print(const vector<Deltagar_Type> &vec)
 {
-  return a.tider.front() < b.tider.front();
-}
-void Print(const vector<Deltagar_t> &vec)
-{
-
   // Headers
   cout << setw(1) << right << "Efternamn"
        << setw(11) << right << "Förnamn"
        << setw(23) << right << "Klubb: Tider" << endl;
   cout << string(42, '=') << endl;
 
-  for (const auto &deltagare : vec)
+  for (size_t i = 0; i < vec.size(); ++i)
   {
+    const Deltagar_Type &deltagare = vec.at(i);
     cout << setw(9) << right << deltagare.efternamn
          << setw(10) << right << deltagare.namn
          << setw(16) << right << deltagare.klubb << ":";
 
-    for (const auto &tid : deltagare.tider)
+    for (size_t j = 0; j < deltagare.tider.size(); ++j)
     {
-      cout << " " << fixed << setprecision(2) << tid;
+      cout << " " << fixed << setprecision(2) << deltagare.tider.at(j);
     }
     cout << endl;
   }
@@ -83,12 +79,12 @@ void Print(const vector<Deltagar_t> &vec)
 
 int main()
 {
-  vector<Deltagar_t> deltagare;
-  GetInfo(deltagare);
-  GetTime(deltagare);
-  SortTimes(deltagare);
-  sort(deltagare.begin(), deltagare.end(), CompareDeltagare);
-  Print(deltagare);
+  vector<Deltagar_Type> deltagare;
+  get_info(deltagare);
+  get_time(deltagare);
+  sort_times(deltagare);
+  sort(deltagare.begin(), deltagare.end());
+  print(deltagare);
 
   return 0;
 }
