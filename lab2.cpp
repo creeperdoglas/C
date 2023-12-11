@@ -15,9 +15,9 @@ int main()
   string shortestWord, longestWord;
   char buffer[11]{};
   int letterCount{}, digitCount{}, whitespaceCount{};
-  int index{0};
+  int index{};
   char ch{};
-  int count = {0};
+  int count{};
   double averageLength;
 
   // del 1
@@ -71,12 +71,9 @@ int main()
   // del 2
   cout << "Del 2: Teckenhantering" << endl;
 
-  while (count < 10 && cin.get(ch)) // Läs in upp till 10 tecken
+  do
   {
-    if (cin.eof()) // Kontrollera om EOF (Ctrl+D)/Z på linux? har nåtts
-    {
-      break;
-    }
+    cin.get(ch);
 
     if (isalpha(ch))
       letterCount++;
@@ -86,7 +83,7 @@ int main()
       whitespaceCount++;
 
     count++; // Öka räknaren för varje inläst tecken
-  }
+  } while (count < 10);
 
   string word(buffer);
 
