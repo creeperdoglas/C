@@ -14,12 +14,14 @@ struct Deltagar_Type
   std::string efternamn;
   std::string klubb;
   std::vector<double> tider;
-  bool operator<(const Deltagar_Type &other) const
-  {
-    // Jämför den första tiden i tider-vektorn
-    return tider.front() < other.tider.front();
-  }
+  
 } Deltagar;
+
+bool operator<(const Deltagar_Type &lhs, const Deltagar_Type &rhs)
+{
+  // Compare the first times in the tider vectors
+  return lhs.tider.front() < rhs.tider.front();
+}
 
 void get_info(std::vector<Deltagar_Type> &vec);
 void get_time(std::vector<Deltagar_Type> &vec);
