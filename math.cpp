@@ -1,4 +1,5 @@
 // melgu374: Samarbetat med eliom790, Elias Omrane, samma program
+
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -9,14 +10,14 @@ using namespace std;
 
 int fakultet(const int n)
 {
-    int value = 1;
+    int value{1};
 
     if (n == 0)
     {
         return 1;
     }
 
-    for (int i = 2; i <= n; i++)
+    for (int i{2}; i <= n; i++)
     {
         value *= i;
     }
@@ -27,7 +28,7 @@ int fakultet(const int n)
 string multiple_words(const string &text, const int multiplier)
 {
     string return_val;
-    for (int i = 0; i < multiplier; ++i)
+    for (int i{}; i < multiplier; ++i)
     {
         return_val += text;
     }
@@ -36,7 +37,7 @@ string multiple_words(const string &text, const int multiplier)
 
 void swap(int &a, float &b)
 {
-    int storage = a;
+    int storage{a};
     a = static_cast<int>(std::ceil(b));
     b = static_cast<float>(storage);
 
@@ -52,7 +53,7 @@ void length(const string &text_1, const string &text_2, int &total_length, float
 
 void automate_one()
 {
-    int n = 0;
+    int n{};
     cout << "Mata in ett heltal: ";
     cin >> n;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -61,7 +62,7 @@ void automate_one()
 
 void automate_two()
 {
-    int multiplier = 0;
+    int multiplier{};
     string text;
     cout << "Mata in en text och ett heltal: ";
     cin >> text >> multiplier;
@@ -71,8 +72,8 @@ void automate_two()
 
 void automate_three()
 {
-    int a = 0;
-    float b = 0.0;
+    int a{};
+    float b{};
     cout << "Mata in ett heltal och ett flyttal: ";
     cin >> a >> b;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -83,8 +84,8 @@ void automate_four()
 {
     string text_1;
     string text_2;
-    int total_length = 0;
-    float mean_length = 0;
+    int total_length{};
+    float mean_length{};
     cout << "Mata in två ord: ";
     cin >> text_1 >> text_2;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -96,7 +97,7 @@ void automate_four()
 
 int main()
 {
-    int num = 0;
+    int num{};
     cout << "Välkommen till huvudmenyn!" << endl;
     while (num != 5)
     {
