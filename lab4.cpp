@@ -26,7 +26,7 @@ void get_info(vector<Deltagar_Type> &vec)
     cin >> deltagar.efternamn;
 
     // // Rensa inmatningsbufferten
-    //cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    // cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     // Läs in resten av raden som klubb
     getline(cin, deltagar.klubb);
@@ -36,22 +36,22 @@ void get_info(vector<Deltagar_Type> &vec)
 }
 void get_time(vector<Deltagar_Type> &vec)
 {
-  for (size_t i = 0; i < vec.size(); ++i)
+  for (size_t i{}; i < vec.size(); ++i)
   {
-    cout << "Tider " << vec[i].namn << ": ";
+    cout << "Tider " << vec.at(i).namn << ": ";
 
     double times{};
     while (cin >> times && times != -1.00)
     {
-      vec[i].tider.push_back(times);
+      vec.at(i).tider.push_back(times);
     }
   }
 }
 void sort_times(vector<Deltagar_Type> &vec)
 {
-  for (size_t i = 0; i < vec.size(); ++i)
+  for (size_t i{}; i < vec.size(); ++i)
   {
-    sort(vec[i].tider.begin(), vec[i].tider.end());
+    sort(vec.at(i).tider.begin(), vec.at(i).tider.end());
   }
 }
 void print(const vector<Deltagar_Type> &vec)
@@ -62,14 +62,14 @@ void print(const vector<Deltagar_Type> &vec)
        << setw(23) << right << "Klubb: Tider" << endl;
   cout << string(42, '=') << endl;
 
-  for (size_t i = 0; i < vec.size(); ++i)
+  for (size_t i{}; i < vec.size(); ++i)
   {
     const Deltagar_Type &deltagare = vec.at(i);
     cout << setw(9) << right << deltagare.efternamn
          << setw(10) << right << deltagare.namn
          << setw(16) << right << deltagare.klubb << ":";
 
-    for (size_t j = 0; j < deltagare.tider.size(); ++j)
+    for (size_t j{}; j < deltagare.tider.size(); ++j)
     {
       cout << " " << fixed << setprecision(2) << deltagare.tider.at(j);
     }

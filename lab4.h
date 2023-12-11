@@ -14,7 +14,7 @@ struct Deltagar_Type
   std::string efternamn;
   std::string klubb;
   std::vector<double> tider;
-  
+
 } Deltagar;
 
 bool operator<(const Deltagar_Type &lhs, const Deltagar_Type &rhs)
