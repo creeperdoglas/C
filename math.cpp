@@ -1,5 +1,4 @@
 // melgu374: Samarbetat med eliom790, Elias Omrane, samma program
-
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -17,7 +16,7 @@ int fakultet(const int n)
         return 1;
     }
 
-    for (int i{2}; i <= n; i++)
+    for (int i = 2; i <= n; i++)
     {
         value *= i;
     }
@@ -28,7 +27,7 @@ int fakultet(const int n)
 string multiple_words(const string &text, const int multiplier)
 {
     string return_val;
-    for (int i{}; i < multiplier; ++i)
+    for (int i = 0; i < multiplier; ++i)
     {
         return_val += text;
     }
@@ -38,8 +37,8 @@ string multiple_words(const string &text, const int multiplier)
 void swap(int &a, float &b)
 {
     int storage = a;
-    a = ceil(b);
-    b = storage;
+    a = static_cast<int>(std::ceil(b));
+    b = static_cast<float>(storage);
 
     cout << "Heltalets värde är nu " << a << endl;
     cout << "Flyttalets värde är nu " << fixed << setprecision(1) << b << endl;
@@ -56,6 +55,7 @@ void automate_one()
     int n = 0;
     cout << "Mata in ett heltal: ";
     cin >> n;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     cout << "Fakulteten av " << n << " är " << fakultet(n) << endl;
 }
 
@@ -64,8 +64,8 @@ void automate_two()
     int multiplier = 0;
     string text;
     cout << "Mata in en text och ett heltal: ";
-    cin >> text;
-    cin >> multiplier;
+    cin >> text >> multiplier;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     cout << "Den multiplicerade texten är " << multiple_words(text, multiplier) << endl;
 }
 
@@ -75,6 +75,7 @@ void automate_three()
     float b = 0.0;
     cout << "Mata in ett heltal och ett flyttal: ";
     cin >> a >> b;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     swap(a, b);
 }
 
@@ -86,6 +87,7 @@ void automate_four()
     float mean_length = 0;
     cout << "Mata in två ord: ";
     cin >> text_1 >> text_2;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     length(text_1, text_2, total_length, mean_length);
 
     cout << "Totallängd: " << total_length << endl;
