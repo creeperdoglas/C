@@ -1,10 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <hero_handling.h>
-void read(std::ifstream &infile)
+#include "register_handling.h"
+#include "hero_handling.h"
+std::vector<hero_handling> read(std::ifstream &infile)
 {
   std::vector<hero_handling> hero_saved; // register handling
 
@@ -13,7 +9,6 @@ void read(std::ifstream &infile)
   {
     std::istringstream iss(line);
     hero_handling hero;
-
     iss >> hero.name >> hero.birthyear >> hero.weight >> hero.hairC;
 
     int interest;
@@ -24,4 +19,5 @@ void read(std::ifstream &infile)
 
     hero_saved.push_back(hero);
   }
+  return hero_saved;
 }

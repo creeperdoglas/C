@@ -3,6 +3,8 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "hero_handling.cc"
+#include "register_handling.cc"
 
 using namespace std;
 
@@ -20,8 +22,9 @@ int main(int argc, char *argv[])
     std::cerr << "Could not open file" << std::endl;
     return 1;
   }
-
-  std::vector<hero_handling> hero_saved; // register handling
+  std::vector<hero_handling>
+      read(infile);
+  print(hero);
 
   // for (const auto &hero : hero_saved)
   // {

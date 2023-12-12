@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include "register_handling.cc"
 struct hero_handling
 {
   std::string name;
@@ -10,4 +11,4 @@ struct hero_handling
 
 } hero;
 
-void print(hero_handling &);
+void print(hero_saved &hero);
