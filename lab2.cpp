@@ -21,7 +21,7 @@ int main()
   double averageLength;
 
   // del 1
-  
+
   cout << "Del 1: Temperaturtabell" << endl;
 
   do
@@ -49,7 +49,7 @@ int main()
        << setw(13) << "Fahrenheit"
        << setw(10) << "Reaumur" << endl;
 
-  for (int i = 0; i < 7 + 9 + 13 + 10; i++)
+  for (int i{}; i < 7 + 9 + 13 + 10; i++)
     cout << "-";
   cout << endl;
 
@@ -67,11 +67,10 @@ int main()
        << endl;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-
   // del 2
   cout << "Del 2: Teckenhantering" << endl;
 
-  do
+  for (; count < 10; count++)
   {
     cin.get(ch);
 
@@ -81,9 +80,7 @@ int main()
       digitCount++;
     else if (isspace(ch))
       whitespaceCount++;
-
-    count++; // Öka räknaren för varje inläst tecken
-  } while (count < 10);
+  }
 
   string word(buffer);
 
@@ -103,7 +100,6 @@ int main()
        << "Vita tecken.......:" << whitespaceCount << endl
        << endl;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
 
   // del 3
   cout << "Del 3: Ordhantering" << endl
