@@ -11,7 +11,7 @@ int main()
 {
   double start{}, stop{};
   int wordCount{}, totalLength{};
-  string shortestWord, longestWord;
+  string shortestWord{}, longestWord;
   char buffer[11]{};
   int letterCount{}, digitCount{}, whitespaceCount{};
   int index{};
