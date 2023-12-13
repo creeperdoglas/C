@@ -9,7 +9,6 @@ using namespace std;
 
 int main()
 {
-
   double start{}, stop{};
   int wordCount{}, totalLength{};
   string shortestWord, longestWord;
