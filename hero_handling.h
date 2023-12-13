@@ -1,6 +1,10 @@
+#pragma once
 #include <string>
 #include <vector>
-#include "register_handling.cc"
+#include "register_handling.h"
+
+struct register_type;
+
 struct hero_handling
 {
   std::string name;
@@ -8,7 +12,6 @@ struct hero_handling
   float weight;
   std::string hairC;
   std::vector<int> interests;
+};
 
-} hero;
-
-void print(hero_saved &hero);
+void print(register_type &reg);

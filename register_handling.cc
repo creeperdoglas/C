@@ -1,8 +1,8 @@
+#include <sstream>
 #include "register_handling.h"
-#include "hero_handling.h"
-std::vector<hero_handling> read(std::ifstream &infile)
+void read(std::ifstream &infile, register_type &reg)
 {
-  std::vector<hero_handling> hero_saved; // register handling
+  // register handling
 
   std::string line;
   while (std::getline(infile, line))
@@ -17,7 +17,6 @@ std::vector<hero_handling> read(std::ifstream &infile)
       hero.interests.push_back(interest);
     }
 
-    hero_saved.push_back(hero);
+    reg.list_heroes.push_back(hero);
   }
-  return hero_saved;
 }

@@ -1,39 +1,48 @@
 #include <iostream>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 #include <iomanip>
 #include "hero_handling.h"
-#include "register_handling.cc"
+
 using namespace std;
 
-void print(hero_saved &hero)
+void print(register_type &reg)
 {
-  for (auto &a : hero)
-  {
-    cout << "Hero name"
-         << "   "
-         << "Birth year"
-         << "   "
-         << "Weight"
-         << "   "
-         << "Hair color"
-         << "   "
-         << "Interests"
-         << endl;
+  // Print headers with fixed spaces
+  cout << "Hero name"
+       << "   " // 3 spaces
+       << "Birth year"
+       << "   "
+       << "Weight"
+       << "   "
+       << "Hair color"
+       << "   "
+       << "Interests" << endl;
 
-    cout << hero.name
-         << setw(12) << right
-         << hero.birthyear
-         << setw(25) << right
-         << hero.weight
-         << setw(36) << right
-         << hero.hairC;
+  // Column widths based on expected data length
+  const int nameWidth = 20;
+  const int yearWidth = 10;
+  const int weightWidth = 10;
+  const int hairColorWidth = 15;
+  const int interestsWidth = 30;
+
+  for (auto &a : reg.list_heroes)
+  {
+    // Print data with right alignment and specific width
+    cout << left << setw(12) << a.name
+         << setw(13) << a.birthyear // Add 3 to each width for the spaces
+         << setw(9) << a.weight;
 
     // Handle the printing of the interests vector
-    cout << setw(47) << right;
-    for (int interest : hero.interests)
+    if (!a.interests.empty() && a.interests[0] < 10)
+    {
+      cout << left << setw(14) << a.hairC;
+    }
+    else
+    {
+      cout << left << setw(13) << a.hairC;
+    }
+
+    cout << setw(1) << left; // Additional 3 for the spaces
+    for (int interest : a.interests)
     {
       cout << interest << " ";
     }
