@@ -18,7 +18,7 @@ int main()
   int index{};
   char ch{};
   int count{};
-  double averageLength;
+  double averageLength{};
 
   // del 1
 
