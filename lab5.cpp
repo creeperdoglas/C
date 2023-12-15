@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     size_t lastSlash = fullPath.find_last_of("\\/");
     std::string filename = fullPath.substr(lastSlash + 1);
     std::cerr << "Incorrect number of arguments!" << std::endl
-              << "Usage: " << filename << " REGISTERFILE" << std::endl;
+              << "Usage: ./" << filename << " REGISTERFILE" << std::endl;
     return 1;
   }
 
