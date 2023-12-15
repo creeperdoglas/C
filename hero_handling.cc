@@ -92,32 +92,54 @@ void showMenu(register_type &reg, const std::string &filePath)
   } while (choice != 3);
 }
 
+set<int> findInterestIntersection(const set<int> &heroInterests, const vector<int> &matchingInterests)
+{
+  set<int> interests(matchingInterests.begin(), matchingInterests.end());
+  set<int> intersection;
+  set_intersection(heroInterests.begin(), heroInterests.end(), interests.begin(), interests.end(), inserter(intersection, intersection.begin()));
+  return intersection;
+}
+void printHero(const hero_handling &hero, const set<int> &intersection)
+{
+  cout << left << setw(11) << hero.name
+       << setw(12) << hero.birthyear
+       << setw(8) << fixed << setprecision(2) << hero.weight;
+
+  if (!hero.interests.empty() && hero.interests[0] < 10)
+  {
+    cout << left << setw(13) << hero.hairC;
+  }
+  else
+  {
+    cout << left << setw(12) << hero.hairC;
+  }
+
+  for (size_t i = 0; i < hero.interests.size(); ++i)
+  {
+    if (hero.interests[i] < 10 && (i + 1 < hero.interests.size() && hero.interests[i + 1] < 10))
+    {
+      cout << hero.interests[i] << "  ";
+    }
+    else if (i == hero.interests.size() - 1)
+    {
+      cout << hero.interests[i];
+    }
+    else
+    {
+      cout << hero.interests[i] << " ";
+    }
+  }
+  cout << endl;
+}
 void printHeroes(const vector<hero_handling> &heroes, const vector<int> &matchingInterests)
 {
   for (auto &hero : heroes)
   {
     set<int> heroInterests(hero.interests.begin(), hero.interests.end());
-    set<int> interests(matchingInterests.begin(), matchingInterests.end());
-    set<int> intersection;
-    set_intersection(heroInterests.begin(), heroInterests.end(), interests.begin(), interests.end(), inserter(intersection, intersection.begin()));
+    set<int> intersection = findInterestIntersection(heroInterests, matchingInterests);
     if (!intersection.empty())
     {
-      cout << left << setw(11) << hero.name
-           << setw(12) << hero.birthyear
-           << setw(8) << fixed << setprecision(2) << hero.weight;
-      if (!hero.interests.empty() && hero.interests[0] < 10)
-      {
-        cout << left << setw(13) << hero.hairC;
-      }
-      else
-      {
-        cout << left << setw(12) << hero.hairC;
-      }
-      for (int interest : hero.interests)
-      {
-        cout << interest << " ";
-      }
-      cout << endl;
+      printHero(hero, intersection);
     }
   }
 }
