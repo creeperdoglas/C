@@ -27,7 +27,7 @@ void read(std::ifstream &infile, register_type &reg)
   }
 }
 
-void sortFileContents(const std::string &filePath)
+std::vector<hero_handling> readHeroesFromFile(const std::string &filePath)
 {
   std::ifstream infile(filePath);
   std::vector<hero_handling> heroes;
@@ -45,14 +45,22 @@ void sortFileContents(const std::string &filePath)
     }
     heroes.push_back(hero);
   }
+
   infile.close();
-  std::sort(heroes.begin(), heroes.end(),
+  writeSortedHeroesToFile(filePath, heroes);
+  return heroes;
+}
+void writeSortedHeroesToFile(const std::string &filePath, const std::vector<hero_handling> &heroes)
+{
+  std::vector<hero_handling> sortedHeroes = heroes;
+  std::sort(sortedHeroes.begin(), sortedHeroes.end(),
             [](const hero_handling &a, const hero_handling &b)
             {
               return a.name < b.name;
             });
+
   std::ofstream outfile(filePath);
-  for (const auto &hero : heroes)
+  for (const auto &hero : sortedHeroes)
   {
     outfile << hero.name << " " << hero.birthyear << " " << hero.weight << " " << hero.hairC;
     for (int interest : hero.interests)
@@ -88,7 +96,7 @@ void addNewHero(register_type &reg, const std::string &filePath)
     if (!isHeroInRegister(reg, newHero))
     {
       appendHeroToFile(filePath, newHero);
-      sortFileContents(filePath);
+      readHeroesFromFile(filePath);
       updateRegisterFromFile(reg, filePath);
       printCleanFilePath(filePath);
       break;

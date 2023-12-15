@@ -12,7 +12,8 @@ struct register_type
 };
 
 void read(std::ifstream &infile, register_type &reg);
-void sortFileContents(const std::string &filePath);
+std::vector<hero_handling> readHeroesFromFile(const std::string &filePath);
+void writeSortedHeroesToFile(const std::string &filePath, const std::vector<hero_handling> &heroes);
 void printCleanFilePath(const std::string &filePath);
 
 std::string removeDotSlash(const std::string &filePath);

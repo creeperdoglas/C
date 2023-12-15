@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
   std::ifstream infile(argv[1]);
 
-  if (!infile)
+  if (!infile or argc > 1)
   {
     std::string fullPath(argv[0]);
     size_t lastSlash = fullPath.find_last_of("\\/");
