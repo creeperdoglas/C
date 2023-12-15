@@ -24,7 +24,7 @@ void findmatching(vector<hero_handling> &matchingHeroes, vector<int> interests, 
 
 void findAndPrintMatchingHeroes(register_type &reg)
 {
-  cout << "Enter interests (at least one between 1 and 15):";
+  cout << "Enter your interests (at least one between 1 and 15): ";
   while (true)
   {
     string inputLine;
@@ -45,7 +45,7 @@ void findAndPrintMatchingHeroes(register_type &reg)
 
     if (!matchingHeroes.empty())
     {
-      cout << "There are " << matchingHeroes.size() << " heroes matching your interests:" << endl;
+      cout << "There are " << matchingHeroes.size() << " matching heroes." << endl;
       print(matchingHeroes, interests);
       break;
     }
@@ -74,9 +74,9 @@ void showMenu(register_type &reg, const std::string &filePath)
   int choice{};
   do
   {
-    cout << "1) Add new hero\n";
+    cout << "1) Add new hero to register file\n";
     cout << "2) Find matching heroes\n";
-    cout << "3) Quit\n";
+    cout << "3) Quit program\n";
     do
     {
       cout << "Select: ";
@@ -102,16 +102,16 @@ void printHeroes(const vector<hero_handling> &heroes, const vector<int> &matchin
     set_intersection(heroInterests.begin(), heroInterests.end(), interests.begin(), interests.end(), inserter(intersection, intersection.begin()));
     if (!intersection.empty())
     {
-      cout << left << setw(12) << hero.name
-           << setw(13) << hero.birthyear
-           << setw(9) << hero.weight;
+      cout << left << setw(11) << hero.name
+           << setw(12) << hero.birthyear
+           << setw(8) << hero.weight;
       if (!hero.interests.empty() && hero.interests[0] < 10)
       {
-        cout << left << setw(14) << hero.hairC;
+        cout << left << setw(15) << hero.hairC;
       }
       else
       {
-        cout << left << setw(13) << hero.hairC;
+        cout << left << setw(14) << hero.hairC;
       }
       for (int interest : hero.interests)
       {
@@ -125,13 +125,13 @@ void printHeroes(const vector<hero_handling> &heroes, const vector<int> &matchin
 void print(const vector<hero_handling> &heroes, const vector<int> &matchingInterests)
 {
   cout << "Hero name"
-       << "   "
+       << "  "
        << "Birth year"
-       << "   "
+       << "  "
        << "Weight"
-       << "   "
+       << "  "
        << "Hair color"
-       << "   "
+       << "  "
        << "Interests" << endl;
   cout << "====================================================" << endl;
   printHeroes(heroes, matchingInterests);
