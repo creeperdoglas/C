@@ -107,11 +107,11 @@ void printHeroes(const vector<hero_handling> &heroes, const vector<int> &matchin
            << setw(8) << fixed << setprecision(2) << hero.weight;
       if (!hero.interests.empty() && hero.interests[0] < 10)
       {
-        cout << left << setw(15) << hero.hairC;
+        cout << left << setw(13) << hero.hairC;
       }
       else
       {
-        cout << left << setw(14) << hero.hairC;
+        cout << left << setw(12) << hero.hairC;
       }
       for (int interest : hero.interests)
       {
