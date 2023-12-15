@@ -14,4 +14,9 @@ struct hero_handling
   std::vector<int> interests;
 };
 
-void print(register_type &reg);
+void findmatching(std::vector<hero_handling> &matchingHeroes, std::vector<int> interests, register_type &reg);
+void matchingHeroes(register_type &reg);
+void menuChoice(int choice, register_type &reg, const std::string &filePath);
+void showMenu(register_type &reg, const std::string &filePath);
+void printHeroes(const std::vector<hero_handling> &heroes, const std::vector<int> &matchingInterests);
+void print(const std::vector<hero_handling> &heroes, const std::vector<int> &matchingInterests);

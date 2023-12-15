@@ -1,14 +1,130 @@
 #include <iostream>
 #include <iomanip>
+#include <set>
+#include <algorithm>
 #include "hero_handling.h"
 
 using namespace std;
 
-void print(register_type &reg)
+void findmatching(vector<hero_handling> &matchingHeroes, vector<int> interests, register_type &reg)
 {
-  // Print headers with fixed spaces
+  for (auto &hero : reg.list_heroes)
+  {
+    for (int heroInterest : hero.interests)
+    {
+      if (find(interests.begin(), interests.end(), heroInterest) != interests.end())
+      {
+        matchingHeroes.push_back(hero);
+        break;
+      }
+    }
+  }
+}
+
+void findAndPrintMatchingHeroes(register_type &reg)
+{
+  cout << "Enter interests (at least one between 1 and 15):";
+  while (true)
+  {
+    string inputLine;
+    getline(cin, inputLine);
+    if (inputLine.empty())
+    {
+      continue;
+    }
+    vector<int> interests;
+    istringstream iss(inputLine);
+    int interest;
+    while (iss >> interest)
+    {
+      interests.push_back(interest);
+    }
+    vector<hero_handling> matchingHeroes;
+    findmatching(matchingHeroes, interests, reg);
+
+    if (!matchingHeroes.empty())
+    {
+      cout << "There are " << matchingHeroes.size() << " heroes matching your interests:" << endl;
+      print(matchingHeroes, interests);
+      break;
+    }
+  }
+}
+
+void menuChoice(int choice, register_type &reg, const std::string &filePath)
+{
+  switch (choice)
+  {
+  case 1:
+    addNewHero(reg, filePath);
+    break;
+  case 2:
+    findAndPrintMatchingHeroes(reg);
+    break;
+  case 3:
+    cout << "Terminating Hero Matchmaker 3000!" << endl;
+    break;
+  }
+}
+
+void showMenu(register_type &reg, const std::string &filePath)
+{
+  cout << "Welcome to Hero Matchmaker 3000!" << endl;
+  int choice{};
+  do
+  {
+    cout << "1) Add new hero\n";
+    cout << "2) Find matching heroes\n";
+    cout << "3) Quit\n";
+    do
+    {
+      cout << "Select: ";
+      if (!(cin >> choice))
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        continue;
+      }
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      menuChoice(choice, reg, filePath);
+    } while (choice < 1 or choice > 3);
+  } while (choice != 3);
+}
+
+void printHeroes(const vector<hero_handling> &heroes, const vector<int> &matchingInterests)
+{
+  for (auto &hero : heroes)
+  {
+    set<int> heroInterests(hero.interests.begin(), hero.interests.end());
+    set<int> interests(matchingInterests.begin(), matchingInterests.end());
+    set<int> intersection;
+    set_intersection(heroInterests.begin(), heroInterests.end(), interests.begin(), interests.end(), inserter(intersection, intersection.begin()));
+    if (!intersection.empty())
+    {
+      cout << left << setw(12) << hero.name
+           << setw(13) << hero.birthyear
+           << setw(9) << hero.weight;
+      if (!hero.interests.empty() && hero.interests[0] < 10)
+      {
+        cout << left << setw(14) << hero.hairC;
+      }
+      else
+      {
+        cout << left << setw(13) << hero.hairC;
+      }
+      for (int interest : hero.interests)
+      {
+        cout << interest << " ";
+      }
+      cout << endl;
+    }
+  }
+}
+
+void print(const vector<hero_handling> &heroes, const vector<int> &matchingInterests)
+{
   cout << "Hero name"
-       << "   " // 3 spaces
+       << "   "
        << "Birth year"
        << "   "
        << "Weight"
@@ -16,36 +132,6 @@ void print(register_type &reg)
        << "Hair color"
        << "   "
        << "Interests" << endl;
-
-  // Column widths based on expected data length
-  const int nameWidth = 20;
-  const int yearWidth = 10;
-  const int weightWidth = 10;
-  const int hairColorWidth = 15;
-  const int interestsWidth = 30;
-
-  for (auto &a : reg.list_heroes)
-  {
-    // Print data with right alignment and specific width
-    cout << left << setw(12) << a.name
-         << setw(13) << a.birthyear // Add 3 to each width for the spaces
-         << setw(9) << a.weight;
-
-    // Handle the printing of the interests vector
-    if (!a.interests.empty() && a.interests[0] < 10)
-    {
-      cout << left << setw(14) << a.hairC;
-    }
-    else
-    {
-      cout << left << setw(13) << a.hairC;
-    }
-
-    cout << setw(1) << left; // Additional 3 for the spaces
-    for (int interest : a.interests)
-    {
-      cout << interest << " ";
-    }
-    cout << endl;
-  }
+  cout << "====================================================" << endl;
+  printHeroes(heroes, matchingInterests);
 }
