@@ -29,26 +29,31 @@ void findAndPrintMatchingHeroes(register_type &reg)
   {
     string inputLine;
     getline(cin, inputLine);
-    if (inputLine.empty())
-    {
-      continue;
-    }
     vector<int> interests;
     istringstream iss(inputLine);
-    int interest{};
+    int interest;
+    bool validInput = true;
+
     while (iss >> interest)
     {
+      if (interest < 1 || interest > 15)
+      {
+        cout << "Invalid interest. Enter interests between 1 and 15: ";
+        validInput = false;
+        break;
+      }
       interests.push_back(interest);
     }
+
+    if (!validInput || interests.empty())
+      continue;
+
     vector<hero_handling> matchingHeroes;
     findmatching(matchingHeroes, interests, reg);
 
-    if (!matchingHeroes.empty())
-    {
-      cout << "There are " << matchingHeroes.size() << " matching heroes." << endl;
-      print(matchingHeroes, interests);
-      break;
-    }
+    cout << "There are " << matchingHeroes.size() << " matching heroes." << endl;
+    print(matchingHeroes, interests);
+    break;
   }
 }
 
