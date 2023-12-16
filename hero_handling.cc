@@ -103,15 +103,15 @@ void printHero(const hero_handling &hero, const set<int> &intersection)
 {
   cout << left << setw(11) << hero.name
        << setw(12) << hero.birthyear
-       << setw(9) << fixed << setprecision(2) << hero.weight;
+       << setw(8) << fixed << setprecision(2) << hero.weight;
 
   if (!hero.interests.empty() && hero.interests[0] < 10)
   {
-    cout << left << setw(13) << hero.hairC;
+    cout << left << setw(14) << hero.hairC;
   }
   else
   {
-    cout << left << setw(12) << hero.hairC;
+    cout << left << setw(13) << hero.hairC;
   }
 
   for (size_t i = 0; i < hero.interests.size(); ++i)
