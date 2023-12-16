@@ -33,7 +33,6 @@ void findAndPrintMatchingHeroes(register_type &reg)
     istringstream iss(inputLine);
     int interest;
     bool validInput = true;
-
     while (iss >> interest)
     {
       if (interest < 1 || interest > 15)
@@ -43,13 +42,10 @@ void findAndPrintMatchingHeroes(register_type &reg)
       }
       interests.push_back(interest);
     }
-
     if (!validInput || interests.empty())
       continue;
-
     vector<hero_handling> matchingHeroes;
     findmatching(matchingHeroes, interests, reg);
-
     cout << "There are " << matchingHeroes.size() << " matching heroes." << endl;
     print(matchingHeroes, interests);
     break;
@@ -105,10 +101,8 @@ set<int> findInterestIntersection(const set<int> &heroInterests, const vector<in
 }
 void printHero(const hero_handling &hero, const set<int> &intersection)
 {
-  cout << left << setw(11) << hero.name
-       << setw(12) << hero.birthyear
+  cout << left << setw(11) << hero.name << setw(12) << hero.birthyear
        << setw(8) << fixed << setprecision(2) << hero.weight;
-
   if (!hero.interests.empty() && hero.interests[0] < 10)
   {
     cout << left << setw(14) << hero.hairC;
@@ -117,7 +111,6 @@ void printHero(const hero_handling &hero, const set<int> &intersection)
   {
     cout << left << setw(13) << hero.hairC;
   }
-
   for (size_t i = 0; i < hero.interests.size(); ++i)
   {
     if (hero.interests[i] < 10 && (i + 1 < hero.interests.size() && hero.interests[i + 1] < 10))
