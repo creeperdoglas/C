@@ -103,7 +103,7 @@ void printHero(const hero_handling &hero, const set<int> &intersection)
 {
   cout << left << setw(11) << hero.name
        << setw(12) << hero.birthyear
-       << setw(8) << fixed << setprecision(2) << hero.weight;
+       << setw(9) << fixed << setprecision(2) << hero.weight;
 
   if (!hero.interests.empty() && hero.interests[0] < 10)
   {
