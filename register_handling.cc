@@ -22,7 +22,7 @@ void read(std::ifstream &infile, register_type &reg)
     {
       hero.interests.push_back(interest);
     }
-
+    std::sort(hero.interests.begin(), hero.interests.end());
     reg.list_heroes.push_back(hero);
   }
 }

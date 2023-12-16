@@ -35,7 +35,7 @@ void findAndPrintMatchingHeroes(register_type &reg)
     }
     vector<int> interests;
     istringstream iss(inputLine);
-    int interest;
+    int interest{};
     while (iss >> interest)
     {
       interests.push_back(interest);
