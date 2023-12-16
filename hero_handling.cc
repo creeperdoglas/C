@@ -38,7 +38,6 @@ void findAndPrintMatchingHeroes(register_type &reg)
     {
       if (interest < 1 || interest > 15)
       {
-        cout << "Invalid interest. Enter interests between 1 and 15: ";
         validInput = false;
         break;
       }
