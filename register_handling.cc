@@ -103,11 +103,11 @@ void addNewHero(register_type &reg, const std::string &filePath)
     }
     else
     {
-      cout << "Hero already in register. Enter hero information:\n";
-      newHero = promptForHeroInformation();
+      cout << "Hero already in register. ";
     }
   }
 }
+
 hero_handling promptForHeroInformation()
 {
   string inputLine{};
