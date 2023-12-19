@@ -9,7 +9,7 @@ struct Hero_Type;
 
 using Register_Type = std::vector<Hero_Type>;
 void read(std::ifstream &infile, Register_Type &reg);
-void find_matching(vector<Hero_Type> &matching_heroes, const vector<int> &interests, Register_Type &reg);
+void find_matching(std::vector<Hero_Type> &matching_heroes, const std::vector<int> &interests, Register_Type &reg);
 void find_and_print_matching_heroes(Register_Type &reg);
 // void matching_heroes(Register_Type &reg);
 void menu_choice(int choice, Register_Type &reg, const std::string &file_path);
@@ -17,9 +17,9 @@ void show_menu(Register_Type &reg, const std::string &file_path);
 
 std::vector<Hero_Type> read_heroes_from_file(const std::string &file_path);
 void write_sorted_heroes_to_file(const std::string &file_path, const std::vector<Hero_Type> &heroes);
-void print_clean_file_path(const std::string &file_path);
 
 std::string remove_dot_slash(const std::string &file_path);
+void print_clean_file_path(const std::string &file_path);
 void add_new_hero(Register_Type &reg, const std::string &file_path);
 
 Hero_Type prompt_for_hero_information();
