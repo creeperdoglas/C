@@ -8,37 +8,121 @@
 
 using namespace std;
 
-void read(std::ifstream &infile, register_type &reg)
+void read(ifstream &infile, Register_Type &reg)
 {
-  std::string line;
-  while (std::getline(infile, line))
+  string line{};
+  while (getline(infile, line))
   {
-    std::istringstream iss(line);
-    hero_handling hero;
-    iss >> hero.name >> hero.birthyear >> hero.weight >> hero.hairC;
+    istringstream iss(line);
+    Hero_Type hero;
+    iss >> hero.name >> hero.birthyear >> hero.weight >> hero.hair_colour;
 
-    int interest;
+    int interest{};
     while (iss >> interest)
     {
       hero.interests.push_back(interest);
     }
-    std::sort(hero.interests.begin(), hero.interests.end());
-    reg.list_heroes.push_back(hero);
+    sort(hero.interests.begin(), hero.interests.end());
+    reg.push_back(hero);
+  }
+}
+void find_matching(vector<Hero_Type> &matching_heroes, const vector<int> &interests, Register_Type &reg)
+{
+  for (auto &hero : reg)
+  {
+    for (int hero_interest : hero.interests)
+    {
+      if (find(interests.begin(), interests.end(), hero_interest) != interests.end())
+      {
+        matching_heroes.push_back(hero);
+        break;
+      }
+    }
   }
 }
 
-std::vector<hero_handling> readHeroesFromFile(const std::string &filePath)
+void find_and_print_matching_heroes(Register_Type &reg)
 {
-  std::ifstream infile(filePath);
-  std::vector<hero_handling> heroes;
-  std::string line;
-
-  while (std::getline(infile, line))
+  cout << "Enter your interests (at least one between 1 and 15): ";
+  while (true)
   {
-    std::istringstream iss(line);
-    hero_handling hero;
-    iss >> hero.name >> hero.birthyear >> hero.weight >> hero.hairC;
-    int interest;
+    string input_line{};
+    getline(cin, input_line);
+    vector<int> interests;
+    istringstream iss(input_line);
+    int interest{};
+    bool valid_input = true;
+    while (iss >> interest)
+    {
+      if (interest < 1 || interest > 15)
+      {
+        valid_input = false;
+        break;
+      }
+      interests.push_back(interest);
+    }
+    if (!valid_input || interests.empty())
+      continue;
+    vector<Hero_Type> matching_heroes;
+    find_matching(matching_heroes, interests, reg);
+    cout << "There are " << matching_heroes.size() << " matching heroes." << endl;
+    print(matching_heroes, interests);
+    break;
+  }
+}
+
+void menu_choice(int choice, Register_Type &reg, const string &file_path)
+{
+  switch (choice)
+  {
+  case 1:
+    add_new_hero(reg, file_path);
+    break;
+  case 2:
+    find_and_print_matching_heroes(reg);
+    break;
+  case 3:
+    cout << "Terminating Hero Matchmaker 3000!" << endl;
+    break;
+  }
+}
+
+void show_menu(Register_Type &reg, const string &file_path)
+{
+  cout << "Welcome to Hero Matchmaker 3000!" << endl;
+  int choice{};
+  do
+  {
+    cout << "1) Add new hero to register file\n";
+    cout << "2) Find matching heroes\n";
+    cout << "3) Quit program\n";
+    do
+    {
+      cout << "Select: ";
+      if (!(cin >> choice))
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        continue;
+      }
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      menu_choice(choice, reg, file_path);
+    } while (choice < 1 or choice > 3);
+  } while (choice != 3);
+}
+
+vector<Hero_Type> read_heroes_from_file(const string &file_path)
+{
+  ifstream infile(file_path);
+  vector<Hero_Type> heroes;
+  string line{};
+
+  while (getline(infile, line))
+  {
+    istringstream iss(line);
+    Hero_Type hero;
+    iss >> hero.name >> hero.birthyear >> hero.weight >> hero.hair_colour;
+    int interest{};
     while (iss >> interest)
     {
       hero.interests.push_back(interest);
@@ -47,58 +131,58 @@ std::vector<hero_handling> readHeroesFromFile(const std::string &filePath)
   }
 
   infile.close();
-  writeSortedHeroesToFile(filePath, heroes);
+  write_sorted_heroes_to_file(file_path, heroes);
   return heroes;
 }
-void writeSortedHeroesToFile(const std::string &filePath, const std::vector<hero_handling> &heroes)
+void write_sorted_heroes_to_file(const string &file_path, const vector<Hero_Type> &heroes)
 {
-  std::vector<hero_handling> sortedHeroes = heroes;
-  std::sort(sortedHeroes.begin(), sortedHeroes.end(),
-            [](const hero_handling &a, const hero_handling &b)
-            {
-              return a.name < b.name;
-            });
+  vector<Hero_Type> sorted_heroes = heroes;
+  sort(sorted_heroes.begin(), sorted_heroes.end(),
+       [](const Hero_Type &a, const Hero_Type &b)
+       {
+         return a.name < b.name;
+       });
 
-  std::ofstream outfile(filePath);
-  for (const auto &hero : sortedHeroes)
+  ofstream outfile(file_path);
+  for (const auto &hero : sorted_heroes)
   {
-    outfile << hero.name << " " << hero.birthyear << " " << hero.weight << " " << hero.hairC;
+    outfile << hero.name << " " << hero.birthyear << " " << hero.weight << " " << hero.hair_colour;
     for (int interest : hero.interests)
     {
       outfile << " " << interest;
     }
-    outfile << std::endl;
+    outfile << endl;
   }
   outfile.close();
 }
 
-std::string removeDotSlash(const std::string &filePath)
+string remove_dot_slash(const string &file_path)
 {
-  if (filePath.size() >= 2 && filePath[0] == '.' && filePath[1] == '/')
+  if (file_path.size() >= 2 && file_path[0] == '.' && file_path[1] == '/')
   {
-    return filePath.substr(2);
+    return file_path.substr(2);
   }
-  return filePath;
+  return file_path;
 }
-void printCleanFilePath(const std::string &filePath)
+void print_clean_file_path(const string &file_path)
 {
-  std::string cleanFilePath = removeDotSlash(filePath);
-  std::cout << "The hero was added to the register on file " << cleanFilePath << std::endl;
+  string cleanfile_path = remove_dot_slash(file_path);
+  cout << "The hero was added to the register on file " << cleanfile_path << endl;
 }
 
-void addNewHero(register_type &reg, const std::string &filePath)
+void add_new_hero(Register_Type &reg, const string &file_path)
 {
   while (true)
   {
     cout << "Enter hero information:\n";
-    hero_handling newHero = promptForHeroInformation();
+    Hero_Type new_hero = prompt_for_hero_information();
 
-    if (!isHeroInRegister(reg, newHero))
+    if (!is_hero_in_register(reg, new_hero))
     {
-      appendHeroToFile(filePath, newHero);
-      readHeroesFromFile(filePath);
-      updateRegisterFromFile(reg, filePath);
-      printCleanFilePath(filePath);
+      append_hero_to_file(file_path, new_hero);
+      read_heroes_from_file(file_path);
+      update_register_from_file(reg, file_path);
+      print_clean_file_path(file_path);
       break;
     }
     else
@@ -108,27 +192,27 @@ void addNewHero(register_type &reg, const std::string &filePath)
   }
 }
 
-hero_handling promptForHeroInformation()
+Hero_Type prompt_for_hero_information()
 {
-  string inputLine{};
+  string input_line{};
 
-  getline(cin, inputLine);
-  istringstream iss(inputLine);
-  hero_handling newHero;
-  iss >> newHero.name >> newHero.birthyear >> newHero.weight >> newHero.hairC;
+  getline(cin, input_line);
+  istringstream iss(input_line);
+  Hero_Type new_hero;
+  iss >> new_hero.name >> new_hero.birthyear >> new_hero.weight >> new_hero.hair_colour;
   int interest{};
   while (iss >> interest)
   {
-    newHero.interests.push_back(interest);
+    new_hero.interests.push_back(interest);
   }
-  return newHero;
+  return new_hero;
 }
 
-bool isHeroInRegister(const register_type &reg, const hero_handling &hero)
+bool is_hero_in_register(const Register_Type &reg, const Hero_Type &hero)
 {
-  for (const auto &existingHero : reg.list_heroes)
+  for (const auto &existing_hero : reg)
   {
-    if (existingHero.name == hero.name)
+    if (existing_hero.name == hero.name)
     {
       return true;
     }
@@ -136,10 +220,10 @@ bool isHeroInRegister(const register_type &reg, const hero_handling &hero)
   return false;
 }
 
-void appendHeroToFile(const std::string &filePath, const hero_handling &hero)
+void append_hero_to_file(const string &file_path, const Hero_Type &hero)
 {
-  ofstream outfile(filePath.c_str(), ios::app);
-  outfile << hero.name << " " << hero.birthyear << " " << hero.weight << " " << hero.hairC;
+  ofstream outfile(file_path.c_str(), ios::app);
+  outfile << hero.name << " " << hero.birthyear << " " << hero.weight << " " << hero.hair_colour;
   for (int interest : hero.interests)
   {
     outfile << " " << interest;
@@ -148,10 +232,10 @@ void appendHeroToFile(const std::string &filePath, const hero_handling &hero)
   outfile.close();
 }
 
-void updateRegisterFromFile(register_type &reg, const std::string &filePath)
+void update_register_from_file(Register_Type &reg, const string &file_path)
 {
-  std::ifstream infile(filePath);
-  reg.list_heroes.clear();
+  ifstream infile(file_path);
+  reg.clear();
   read(infile, reg);
   infile.close();
 }

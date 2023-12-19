@@ -2,24 +2,17 @@
 #include <string>
 #include <vector>
 #include <set>
-#include "register_handling.h"
 
-struct register_type;
-
-struct hero_handling
+struct Hero_Type
 {
   std::string name;
   int birthyear;
   float weight;
-  std::string hairC;
+  std::string hair_colour;
   std::vector<int> interests;
 };
 
-void findmatching(std::vector<hero_handling> &matchingHeroes, std::vector<int> interests, register_type &reg);
-void matchingHeroes(register_type &reg);
-void menuChoice(int choice, register_type &reg, const std::string &filePath);
-void showMenu(register_type &reg, const std::string &filePath);
-std::set<int> findInterestIntersection(const std::set<int> &heroInterests, const std::vector<int> &matchingInterests);
-void printHero(const hero_handling &hero, const std::set<int> &intersection);
-void printHeroes(const std::vector<hero_handling> &heroes, const std::vector<int> &matchingInterests);
-void print(const std::vector<hero_handling> &heroes, const std::vector<int> &matchingInterests);
+std::set<int> find_interest_intersection(const std::set<int> &hero_interests, const std::vector<int> &matching_interests);
+void print_hero(const Hero_Type &hero, const std::set<int> &intersection);
+void print_heroes(const std::vector<Hero_Type> &heroes, const std::vector<int> &matching_interests);
+void print(const std::vector<Hero_Type> &heroes, const std::vector<int> &matching_interests);
